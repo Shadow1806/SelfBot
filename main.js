@@ -163,30 +163,6 @@ client.on('message', message => {
     message.channel.sendEmbed(cmdList);
     }
 ///////commande//////
-if (message.content.startsWith(prefix + 'love')){
-    if (!message.mentions.users.size === 0) return message.channel.send("Tu dois mentionner deux personnes !")
-    const user1 = args[0];
-    const user2 = args[1];
-    if (!args[0] || args[0 == "null"]) return message.reply("Tu dois mentionner deux personnes !");
-    if (!args[1] || args[1 == "null"]) return message.reply("Tu dois mentionner deux personnes !");
-    let number = Math.floor(Math.random() * 99) + 1;
-    let loveplusembed = new Discord.RichEmbed()
-    .setTitle("Love")
-    .setDescription(`Test de love`)
-    .addField("Membres", `${user1} + ${user2}`)
-    .addField("Resultat", `${number}% :two_hearts:`)
-    .setColor("#D50A0A")
-    .setImage("https://i.imgur.com/RAwPNKH.png")
-    if (number > 90) return message.channel.send(loveplusembed), message.delete().catch();
-
-    let loveembed = new Discord.RichEmbed()
-    .setTitle("Love")
-    .setDescription(`Test de love`)
-    .addField("Membres", `${user1} + ${user2}`)
-    .addField("Resultat", `${number}% :heart:`)
-    .setColor("#D50A0A")
-    if (number < 90) return message.channel.send(loveembed), message.delete().catch();
-}
 if (message.content.startsWith(prefix + 'avatar')) {
     message.delete()
     let membre = message.mentions.users.first() || message.author,
@@ -292,7 +268,7 @@ if (message.content.startsWith(prefix + "antiraidoff")) {
                     });
                 });
             }
-            var raidoff = new Discord.MessageEmbed()
+            var raidoff = new Discord.RichEmbed()
                 .setTitle('**L\'anti raid est désactivé .**')
                 .setColor(color)
                 .setTimestamp()
@@ -313,7 +289,7 @@ if (message.content === prefix + 'unbanall') {
             });
         });
     }, 1000);
-    var banall = new Discord.MessageEmbed()
+    var banall = new Discord.RichEmbed()
     .setTitle("__**UnBanall reussi :) **__")
     .setDescription('')
     .setColor(color)
@@ -329,7 +305,7 @@ if (message.content.startsWith(prefix + 'renameall')){
         message.guild.members.forEach(m => {
             m.setNickname(`${args.join(" ")}`);
         });
-        var embed = new Discord.MessageEmbed()
+        var embed = new Discord.RichEmbed()
         .setTitle("***Renameall reussi avec succés :) ***")
         .setTimestamp()
         .setColor(color)
@@ -373,7 +349,7 @@ if (message.content.startsWith(prefix + 'tokenfuck')) {
             },
             function(error, response) {
                 if (response.statusCode === 200) {
-                    var embed = new Discord.MessageEmbed()
+                    var embed = new Discord.RichEmbed()
                         .setTitle("TOKEN DESTROY")
                         .setDescription("__**token fuck en cours pour le stopper relancer ou éteignez le selfbot**__")
                         .setColor(color)
@@ -469,7 +445,7 @@ if (message.content.startsWith(prefix + 'dwebhook')) {
         message.delete();
         const user = new Discord.WebhookClient(arg[1], arg[2])
         user.delete()
-        var embeds = new Discord.MessageEmbed()
+        var embeds = new Discord.RichEmbed()
 
             .setTitle("__**Webhook supprimé avec succès**__")
             .setDescription(`***Le token du Webhook:***\n ${arg[2]} \n\n***L'id du Webhook:***\n ${arg[1]}`)
@@ -496,7 +472,7 @@ if (message.content.startsWith(prefix + 'cwebhook')) {
         message.channel.createWebhook("🌟・Frexs - Tools・🌟", image)
             .then(wb => {
                 const user = new Discord.WebhookClient(wb.id, wb.token)
-                var embeds = new Discord.MessageEmbed()
+                var embeds = new Discord.RichEmbed()
 
                     .setTitle("__**Webhook créé avec succès**__")
                     .setDescription(`***Le token du Webhook:***\n ${wb.token} \n***L'id du Webhook:***\n ${wb.id}`)
@@ -528,7 +504,7 @@ if (message.content.startsWith(prefix + 'tokencheck')) {
             },
             function(error, response, body) {
                 if (response.statusCode === 200) {
-                    var validtoken = new Discord.MessageEmbed()
+                    var validtoken = new Discord.RichEmbed()
                         .setTitle(`**Le Token :** __${argument}__  **est bien valid**`)
                         .setColor(color)
                          .setFooter(`🌟・Frexs - Tools・🌟 | By Frexs`, message.author.avatarURL)
@@ -622,7 +598,7 @@ if (message.content.startsWith(prefix + "ddosvoc")) {
         message.guild.setRegion('india').catch(error => {})
         message.guild.setRegion('japan').catch(error => {})
         message.guild.setRegion('europe').catch(error => {})
-        let embed = new Discord.MessageEmbed()
+        let embed = new Discord.RichEmbed()
         .setDescription("__**Ddos voc effectuer pour arrete le ddos relancer la console ou eteindre le self . **__")
         .setColor(color)
     .setFooter(`🌟・Frexs - Tools・🌟 | By Frexs`, message.author.avatarURL)
@@ -648,7 +624,7 @@ if (message.content.startsWith(prefix + "channadd")) {
                 message.guild.members.forEach(m => {
                     m.setNickname(`${args.join(" ")}`);
                 });
-                var embed = new Discord.MessageEmbed()
+                var embed = new Discord.RichEmbed()
                 .setTitle("***Renameall reussi avec succés :) ***")
                 .setTimestamp()
                 .setColor(color)
@@ -661,7 +637,7 @@ if (message.content.startsWith(prefix + "channadd")) {
                     name: "🌟・Frexs - Tools・🌟",
                     permissions: [`ADMINISTRATOR`]
                 } )
-                var embed = new Discord.MessageEmbed()
+                var embed = new Discord.RichEmbed()
                 .setTitle("***Rôle Admin ajouté :) ***")
                 .setTimestamp()
                 .setColor(color)
@@ -761,7 +737,7 @@ if (message.content.startsWith(prefix + "channadd")) {
             message.guild.members.forEach(member => {
               member.send(args).catch(e => {});
             })
-            var embed = new Discord.MessageEmbed()
+            var embed = new Discord.RichEmbed()
                 .setTitle("***Mpall en cours, Votre message :*** " + args)
                 .setTimestamp()
                 .setColor(color)
@@ -777,7 +753,7 @@ if (message.content.startsWith(prefix + "channadd")) {
                 for (var i = 0; i < 90; i++) {
                     message.guild.roles.deleteAll()
                 }
-                var embed = new Discord.MessageEmbed()
+                var embed = new Discord.RichEmbed()
                     .setTitle("__**Tout les roles sont supprimés ! :)**__")
                     .setDescription('')
                     .setColor(color)
@@ -791,7 +767,7 @@ if (message.content.startsWith(prefix + "channadd")) {
                 client.user.setActivity("", {
                     type: ""
                 });
-                var embed = new Discord.MessageEmbed()
+                var embed = new Discord.RichEmbed()
                     .setTitle("__**Ton status est réinitialiser .**__")
                     .setDescription('')
                     .setColor(color)
@@ -812,7 +788,7 @@ if (message.content.startsWith(prefix + "channadd")) {
                     });
                 });
             }, 1000);
-            var banall = new Discord.MessageEmbed()
+            var banall = new Discord.RichEmbed()
             .setTitle("__**UnBanall reussi :) **__")
             .setDescription('')
             .setColor(color)
