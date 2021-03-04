@@ -99,7 +99,7 @@ client.on('ready', function() {
       .then(imaged => {
             let presence = new rpcGenereator.Rpc()
                 .setName(`🔱・Frexs - tools・🔱`)
-                .setUrl('https://www.twitch.tv/Arcadia')
+                .setUrl('')
                 .setType("PLAYING")
                 .setApplicationId("808014420009680936")
                 .setAssetsLargeImage(image.id)
