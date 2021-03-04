@@ -1,2 +1,0 @@
-# SelfBot
-A basic selfbot..
